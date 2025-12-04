@@ -3,7 +3,7 @@
 
 Smart disaster management platform for citizens, volunteers, and authorities.
 
-## 🌪 What It Does
+##  What It Does
 
 Working prototype demonstrates:
 
@@ -25,13 +25,14 @@ Working prototype demonstrates:
 
 | Name          | Roll No.      | Branch | Phone      | Email                          | Role    |
 |--------------|---------------|--------|------------|--------------------------------|--------|
-| PRASOON KUMAR| (fill)        | CSE    | 9757xxxxxx | prasoon.kumar_cs23@gla.ac.in   | Member |
+| PRASOON KUMAR| 2315001650    | CSE    | 9757xxxxxx | prasoon.kumar_cs23@gla.ac.in   | Member |
 | NEHA SINGH   | 2315001455    | CSE    | 8923548886 | neha.singh_cs23@gla.ac.in      | Member |
-| AKSHAY SINGH | (fill)        | AIML   | 8318492363 | akshay.chauhan_cs.aiml23@...   | Captain|
-| RUPAM GANGULY| (fill)        | AIML   | 8171551712 | rupam.ganguly_cs.aiml23@...    | Member |
-| MADHAV GUPTA | (fill)        | DA     | 7251054896 | madhav.gupta_cs.da23@...       | Member |
+| AKSHAY SINGH | 2315510019    | AIML   | 8318492363 | akshay.chauhan_cs.aiml23@...   | Captain|
+| RUPAM GANGULY| 2315510177    | AIML   | 8171551712 | rupam.ganguly_cs.aiml23@...    | Member |
+| MADHAV GUPTA | 2315200017    | DA     | 7251054896 | madhav.gupta_cs.da23@...       | Member |
 
 ````
+![WhatsApp Image 2025-12-04 at 12 18 08_352f704e](https://github.com/user-attachments/assets/b365dca8-4ea3-4f5e-9b74-0b4593023eb4)
 
 ## Working Prototype Should Demonstrate
 
@@ -51,137 +52,5 @@ Working prototype demonstrates:
   - Optional damage notes and photos in “Resolved” state
 
 ---
+![WhatsApp Image 2025-12-04 at 12 17 11_69ad24b7](https://github.com/user-attachments/assets/7edeb91b-9f25-495a-8939-938797fabded)
 
-## Documentation
-
-- **Technical architecture** → `docs/Architecture.md`
-- **API design** → `docs/API-Design.md`
-- **Database schema** → `docs/DB-Schema.md`
-- **Disaster phase coverage (20-25-40-15)** → `docs/DisasterPhases.md`
-
----
-
-## Pitch
-
-- **5–7 minute demo** (see `pitch/PitchOutline.md`)
-- Flow: **Problem → Solution → Architecture → Live Workflow → Impact**
-```
-
----
-# API Design (Draft)
-
-Base URL: `/api`
-
-## 1. Incidents
-
-- `GET /incidents`
-  - Query: `status`, `priority`, `area`
-- `POST /incidents`
-  - Body: `{ title, description, lat, lng, mediaUrl?, priority, reporterContact, sos }`
-- `PATCH /incidents/:id`
-  - Body: `{ status, assignedVolunteerId?, notes? }`
-
-## 2. Volunteers
-
-- `GET /volunteers`
-- `POST /volunteers`
-- `PATCH /volunteers/:id` – update availability / workload
-
-## 3. Shelters & Resources
-
-- `GET /shelters`
-- `POST /shelters`
-
-## 4. Messages / Communication
-
-- `GET /messages?incidentId=...`
-- `POST /messages`
-  - Body: `{ incidentId, senderRole, text }`
-```
-
-
-## Collection: shelters
-
-```json
-{
-  "_id": "ObjectId",
-  "name": "Community Hall A",
-  "lat": 28.60,
-  "lng": 77.20,
-  "capacity": 250,
-  "availableBeds": 120,
-  "resources": ["water", "food", "medicine"]
-}
-```
-
-## Collection: messages
-
-```json
-{
-  "_id": "ObjectId",
-  "incidentId": "ObjectId",
-  "senderRole": "citizen | volunteer | authority",
-  "text": "Rescue team dispatched.",
-  "createdAt": "Date"
-}
-```
-
-```md
-# Disaster Phase Coverage (20–25–40–15)
-
-> Mapping features to phases of disaster management.
-
-1. **Mitigation (20%)**
-   - Historic incident data & heatmap to identify hotspots.
-   - Resource/shelter mapping for preparedness.
-
-2. **Preparedness (25%)**
-   - Volunteer registry & training dashboard.
-   - Pre-configured broadcast templates for alerts.
-
-3. **Response (40%)**
-   - Live incident reporting + SOS.
-   - Real-time map of requests, rescues, and roadblocks.
-   - Task assignment to volunteers & workload tracking.
-   - Two-way communication between citizens, volunteers, and control room.
-
-4. **Recovery (15%)**
-   - Damage assessment fields on resolved incidents.
-   - Post-incident reports from authorities.
-   - Data export for long-term planning.
-````
-
----
-```md
-# Pitch Outline (5–7 minutes)
-
-## 1. Problem (1 min)
-- Disasters = chaos: fragmented info, slow response, no unified view.
-- Citizens don’t know **where to report** or **where to go**.
-- Volunteers & authorities struggle with **coordination** and **visibility**.
-
-## 2. Solution – Community Disaster Response Network (1 min)
-- Single platform connecting **citizens + volunteers + authorities**.
-- Real-time map, incident reporting, task assignments, and communication.
-
-## 3. Architecture Overview (1 min)
-- Frontend: Next.js dashboard + map.
-- Backend: Node/Express APIs (incidents, volunteers, shelters, messages).
-- Data: Incident & shelter data stored centrally (MongoDB design).
-
-## 4. Live Workflow Demo (3–4 min)
-1. **Citizen reports incident + SOS**
-   - Show how incident appears on map + alerts panel.
-2. **Authority dashboard**
-   - Stats cards: active incidents, personnel, resources, high-priority alerts.
-3. **Volunteer coordination**
-   - Assign volunteer → status changes from `REPORTED` to `IN_PROGRESS`.
-4. **Recovery phase**
-   - Mark incident `RESOLVED` with damage assessment.
-5. **Communication**
-   - Show alert messages / potential chat stream.
-
-## 5. Impact & Future Scope (30–60 sec)
-- Faster response, better transparency, scalable to any city/state.
-- Future: SMS/IVR integration, offline mode, AI-based priority scoring.
-```
